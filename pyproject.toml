@@ -1,0 +1,36 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "agent-scroll"
+version = "0.1.0"
+description = "Byte-deterministic transcript format for AI-agent conversations (Python port of @p-vbordei/agent-scroll)"
+readme = "README.md"
+license = { text = "Apache-2.0" }
+authors = [{ name = "Vlad Bordei", email = "bordeivlad@gmail.com" }]
+requires-python = ">=3.10"
+keywords = ["agent", "transcript", "scroll", "jcs", "ed25519", "deterministic"]
+classifiers = ["License :: OSI Approved :: Apache Software License"]
+dependencies = [
+  "cryptography>=42.0",
+  "jcs>=0.2.1",
+]
+
+[project.optional-dependencies]
+dev = ["pytest>=8.0", "pytest-asyncio>=0.23", "ruff>=0.5"]
+
+[project.urls]
+Homepage = "https://github.com/p-vbordei/agent-scroll-py"
+Reference = "https://github.com/p-vbordei/agent-scroll"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/agent_scroll"]
+
+[tool.ruff]
+line-length = 100
+target-version = "py310"
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+asyncio_mode = "auto"
